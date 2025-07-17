@@ -15,7 +15,7 @@ Initially I made it return responses like this:
 Then I reconsidered the requirements by you and fixed it to return responses like you requested:
 
 ```markdown
-![Intent Matching Demo](assets/WorkingNLU.mp4)
+[Click here to watch the final NLU demo](assets/WorkingNLU.mp4)
 ```
 
 
