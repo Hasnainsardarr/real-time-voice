@@ -1,0 +1,2837 @@
+{
+    "_id": {
+        "$oid": "6575a630c548c541d14db2cf"
+    },
+    "voicebotname": "solar-original-3813214",
+    "number": 3813214,
+    "playbackfiles": [
+        {
+            "label": "1_can_you_hear_me_okay.wav",
+            "file": "1_can_you_hear_me_okay.wav"
+        },
+        {
+            "label": "resin_Main1.wav",
+            "file": "resin_Main1.wav"
+        },
+        {
+            "label": "1sol.wav",
+            "file": "1sol.wav"
+        },
+        {
+            "label": "2sol.wav",
+            "file": "2sol.wav"
+        },
+        {
+            "label": "3sol.wav",
+            "file": "3sol.wav"
+        },
+        {
+            "label": "4sol.wav",
+            "file": "4sol.wav"
+        },
+        {
+            "label": "5sol.wav",
+            "file": "5sol.wav"
+        },
+        {
+            "label": "6sol.wav",
+            "file": "6sol.wav"
+        },
+        {
+            "label": "7sol.wav",
+            "file": "7sol.wav"
+        },
+        {
+            "label": "8sol.wav",
+            "file": "8sol.wav"
+        },
+        {
+            "label": "9sol.wav",
+            "file": "9sol.wav"
+        },
+        {
+            "label": "NI_endCall.wav",
+            "file": "NI_endCall.wav"
+        },
+        {
+            "label": "1sol_repeat.wav",
+            "file": "1sol_repeat.wav"
+        },
+        {
+            "label": "does_my_roof_become_your_companies.wav",
+            "file": "does_my_roof_become_your_companies.wav"
+        },
+        {
+            "label": "how_did_u_get_my_info.wav",
+            "file": "how_did_u_get_my_info.wav"
+        },
+        {
+            "label": "how_long_is_survey.wav",
+            "file": "how_long_is_survey.wav"
+        },
+        {
+            "label": "how_much_is_it.wav",
+            "file": "how_much_is_it.wav"
+        },
+        {
+            "label": "i_might_have_wrong_info.wav",
+            "file": "i_might_have_wrong_info.wav"
+        },
+        {
+            "label": "im_new_at_this_job.wav",
+            "file": "im_new_at_this_job.wav"
+        },
+        {
+            "label": "is_the_survey_free.wav",
+            "file": "is_the_survey_free.wav"
+        },
+        {
+            "label": "my_manager_is_mark.wav",
+            "file": "my_manager_is_mark.wav"
+        },
+        {
+            "label": "my_names_jane.wav",
+            "file": "my_names_jane.wav"
+        },
+        {
+            "label": "no_obligation.wav",
+            "file": "no_obligation.wav"
+        },
+        {
+            "label": "savings_with_solar.wav",
+            "file": "savings_with_solar.wav"
+        },
+        {
+            "label": "what_time_best_4_CB_PART2.wav",
+            "file": "what_time_best_4_CB_PART2.wav"
+        },
+        {
+            "label": "what_time_best_4_CB.wav",
+            "file": "what_time_best_4_CB.wav"
+        },
+        {
+            "label": "what_type_of_solar.wav",
+            "file": "what_type_of_solar.wav"
+        },
+        {
+            "label": "whats_my_name.wav",
+            "file": "whats_my_name.wav"
+        },
+        {
+            "label": "whats_my_postcode.wav",
+            "file": "whats_my_postcode.wav"
+        },
+        {
+            "label": "whats_this_all_about.wav",
+            "file": "whats_this_all_about.wav"
+        },
+        {
+            "label": "where_did_u_get_my_info.wav",
+            "file": "where_did_u_get_my_info.wav"
+        },
+        {
+            "label": "why_am_i_eligible.wav",
+            "file": "why_am_i_eligible.wav"
+        },
+        {
+            "label": "why_u_need_my_age.wav",
+            "file": "why_u_need_my_age.wav"
+        },
+        {
+            "label": "why_u_need_my_name.wav",
+            "file": "why_u_need_my_name.wav"
+        },
+        {
+            "label": "will_do_survey_but_wont_promise.wav",
+            "file": "will_do_survey_but_wont_promise.wav"
+        }
+    ],
+    "flow": [
+        {
+            "prompt": "start",
+            "fulfil": [
+                {
+                    "intent": "_default_",
+                    "action": "wav_response",
+                    "say": "1_can_you_hear_me_okay.wav"
+                }
+            ],
+            "objections": [],
+            "fallback": []
+        },
+        {
+            "prompt": "1sol",
+            "fulfil": [
+                {
+                    "intent": "greeting",
+                    "action": "wav_response",
+                    "say": "1sol.wav"
+                },
+                {
+                    "intent": "what do you mean",
+                    "action": "wav_response",
+                    "say": "1sol.wav"
+                },
+                {
+                    "intent": "whats this call about",
+                    "action": "wav_response",
+                    "say": "1sol.wav"
+                },
+                {
+                    "intent": "good day",
+                    "action": "wav_response",
+                    "say": "1sol.wav"
+                },
+                {
+                    "intent": "agree",
+                    "action": "wav_response",
+                    "say": "1sol.wav"
+                },
+                {
+                    "intent": "yes i can hear you",
+                    "action": "wav_response",
+                    "say": "1sol.wav"
+                },
+                {
+                    "intent": "who's calling",
+                    "action": "wav_response",
+                    "say": "1sol.wav"
+                },
+                {
+                    "intent": "who are you",
+                    "action": "wav_response",
+                    "say": "1sol.wav"
+                },
+                {
+                    "intent": "where are you calling from",
+                    "action": "wav_response",
+                    "say": "1sol.wav"
+                },
+                {
+                    "intent": "what company are you",
+                    "action": "wav_response",
+                    "say": "1sol.wav"
+                },
+                {
+                    "intent": "hello",
+                    "action": "wav_response",
+                    "say": "resin_Main1.wav"
+                },
+                {
+                    "intent": "yes",
+                    "action": "wav_response",
+                    "say": "resin_Main1.wav"
+                }
+            ],
+            "objections": [
+                {
+                    "intent": "sorry, pardon can you say that again?",
+                    "action": "wav_response",
+                    "say": "1_can_you_hear_me_okay.wav"
+                },
+                {
+                    "intent": "your call cannot be taken at the moment",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "Welcome to sky voicemail 1571, the person your calling is not available",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "Please leave your name and phone number after the beep",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "Welcome to BT voicemail the person your calling is not available",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "the person your calling is not available right now",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "Please leave a message after the tone",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "your call cannot be taken at the moment",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "Screened by talk talk",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "Welcome to BT call minder",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "Welcome to voicemail",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "Welcome to the messaging service",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "Being Screened by BT call blocking service",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "Call to this number are Screened by sky talk shield",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "we are not available right now",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "The person your calling is unavailable",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "The person your calling isn't around right now",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "The person your calling is not available",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "The person your calling isn't available",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "Calls to this number are being screened by BT call guardian",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "Were sorry we can't take your call right now",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "voicemail",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "answer machine",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                },
+                {
+                    "intent": "your calling a business",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "leave a message",
+                    "action": "wav_response_hangup",
+                    "say": ""
+                }
+            ],
+            "fallback": []
+        },
+        {
+            "prompt": "2sol",
+            "fulfil": [
+                {
+                    "intent": "happy",
+                    "action": "wav_response",
+                    "say": "2sol.wav"
+                },
+                {
+                    "intent": "number",
+                    "action": "wav_response",
+                    "say": "2sol.wav"
+                },
+                {
+                    "intent": "how much does it cost?",
+                    "action": "wav_response",
+                    "say": "2sol.wav"
+                },
+                {
+                    "intent": "am i eligible",
+                    "action": "wav_response",
+                    "say": "2sol.wav"
+                },
+                {
+                    "intent": "what do you mean",
+                    "action": "wav_response",
+                    "say": "2sol.wav"
+                },
+                {
+                    "intent": "whats this call about",
+                    "action": "wav_response",
+                    "say": "2sol.wav"
+                },
+                {
+                    "intent": "what is that",
+                    "action": "wav_response",
+                    "say": "2sol.wav"
+                },
+                {
+                    "intent": "affirm",
+                    "action": "wav_response",
+                    "say": "2sol.wav"
+                },
+                {
+                    "intent": "agree",
+                    "action": "wav_response",
+                    "say": "2sol.wav"
+                },
+                {
+                    "intent": "good day",
+                    "action": "wav_response",
+                    "say": "2sol.wav"
+                },
+                {
+                    "intent": "i'm not interested",
+                    "action": "wav_response",
+                    "say": "2sol.wav"
+                }
+            ],
+            "objections": [
+                {
+                    "intent": "i'm on the telephone preference service list",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i'm on the TPS list",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i'm on the do not call list",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i'm ex directory, you shouldn't be calling us",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "sorry i can't hear, say that again?",
+                    "action": "wav_response",
+                    "say": "1sol.wav"
+                },
+                {
+                    "intent": "sorry, pardon what did you say?",
+                    "action": "wav_response",
+                    "say": "1sol.wav"
+                },
+                {
+                    "intent": "i don't want solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i can't afford",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "Our roof is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "our property is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my home is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my roof is not facing the right direction",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my roof doesn’t get enough sunlight",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "return on investment?",
+                    "action": "wav_response",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "cost of the solar?",
+                    "action": "wav_response",
+                    "say": "how_much_is_it.wav"
+                },
+                {
+                    "intent": "is there any obligation",
+                    "action": "wav_response",
+                    "say": "no_obligation.wav"
+                },
+                {
+                    "intent": "is solar free?",
+                    "action": "wav_response",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "is this with the council?",
+                    "action": "wav_response",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "is this with the goverment?",
+                    "action": "wav_response",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "how long does the survey take?",
+                    "action": "wav_response",
+                    "say": "how_long_is_survey.wav"
+                },
+                {
+                    "intent": "do i still own my roof or does your company own it?",
+                    "action": "wav_response",
+                    "say": "does_my_roof_become_your_companies.wav"
+                },
+                {
+                    "intent": "how much will i save with solar?",
+                    "action": "wav_response",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "how much do people save with solar?",
+                    "action": "wav_response",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "what type of solar is it?",
+                    "action": "wav_response",
+                    "say": "what_type_of_solar.wav"
+                },
+                {
+                    "intent": "what is solar?",
+                    "action": "wav_response",
+                    "say": "whats_this_all_about.wav"
+                },
+                {
+                    "intent": "whats company are you?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "where you calling from?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "who are you?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "what's your name?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "what's your website?",
+                    "action": "wav_response",
+                    "say": "im_new_at_this_job.wav"
+                },
+                {
+                    "intent": "why do you need my surname?",
+                    "action": "wav_response",
+                    "say": "why_u_need_my_name.wav"
+                },
+                {
+                    "intent": "how did you get my details?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "how did you get my number?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "how did you get my information?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "don't you already have my details?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "why am i eligible?",
+                    "action": "wav_response",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "who's eligible?",
+                    "action": "wav_response",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "how do you become eligible?",
+                    "action": "wav_response",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "we're council",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "this is a council property",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "we're rented",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "we're in a rented property",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "your calling a business",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i've already got solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "abuse",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                }
+            ],
+            "fallback": [
+                {
+                    "action": "wav_response",
+                    "say": "2sol.wav"
+                }
+            ]
+        },
+        {
+            "prompt": "3sol",
+            "fulfil": [
+                {
+                    "intent": "do you mean solar panels?",
+                    "action": "wav_response",
+                    "say": "3sol.wav"
+                },
+                {
+                    "intent": "Yes we might consider it",
+                    "action": "wav_response",
+                    "say": "3sol.wav"
+                },
+                {
+                    "intent": "Maybe in the future",
+                    "action": "wav_response",
+                    "say": "3sol.wav"
+                },
+                {
+                    "intent": "happy",
+                    "action": "wav_response",
+                    "say": "3sol.wav"
+                },
+                {
+                    "intent": "am i eligible",
+                    "action": "wav_response",
+                    "say": "3sol.wav"
+                },
+                {
+                    "intent": "what do you mean",
+                    "action": "wav_response",
+                    "say": "3sol.wav"
+                },
+                {
+                    "intent": "whats this call about",
+                    "action": "wav_response",
+                    "say": "3sol.wav"
+                },
+                {
+                    "intent": "what is that",
+                    "action": "wav_response",
+                    "say": "3sol.wav"
+                },
+                {
+                    "intent": "affirm",
+                    "action": "wav_response",
+                    "say": "3sol.wav"
+                },
+                {
+                    "intent": "agree",
+                    "action": "wav_response",
+                    "say": "3sol.wav"
+                },
+                {
+                    "intent": "good day",
+                    "action": "wav_response",
+                    "say": "3sol.wav"
+                },
+                {
+                    "intent": "how does it work",
+                    "action": "wav_response",
+                    "say": "3sol.wav"
+                },
+                {
+                    "intent": "Yes we might consider it",
+                    "action": "wav_response",
+                    "say": "3sol.wav"
+                },
+                {
+                    "intent": "Maybe in the future",
+                    "action": "wav_response",
+                    "say": "3sol.wav"
+                },
+                {
+                    "intent": "i'm not interested",
+                    "action": "wav_response_hangup",
+                    "say": "3sol.wav"
+                }
+            ],
+            "objections": [
+                {
+                    "intent": "i'm on the telephone preference service list",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i'm on the TPS list",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i'm on the do not call list",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i'm ex directory, you shouldn't be calling us",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "sorry i can't hear, say that again?",
+                    "action": "wav_response",
+                    "say": "2sol.wav"
+                },
+                {
+                    "intent": "sorry, pardon what did you say?",
+                    "action": "wav_response",
+                    "say": "2sol.wav"
+                },
+                {
+                    "intent": "i don't want solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i can't afford",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "Our roof is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "our property is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my home is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my roof is not facing the right direction",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my roof doesn’t get enough sunlight",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "return on investment?",
+                    "action": "wav_response",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "cost of the solar?",
+                    "action": "wav_response",
+                    "say": "how_much_is_it.wav"
+                },
+                {
+                    "intent": "is there any obligation",
+                    "action": "wav_response",
+                    "say": "no_obligation.wav"
+                },
+                {
+                    "intent": "no",
+                    "action": "wav_response",
+                    "say": "no_obligation.wav"
+                },
+                {
+                    "intent": "not really",
+                    "action": "wav_response",
+                    "say": "no_obligation.wav"
+                },
+                {
+                    "intent": "is solar free?",
+                    "action": "wav_response",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "is this with the council?",
+                    "action": "wav_response",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "is this with the goverment?",
+                    "action": "wav_response",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "how long does the survey take?",
+                    "action": "wav_response",
+                    "say": "how_long_is_survey.wav"
+                },
+                {
+                    "intent": "do i still own my roof or does your company own it?",
+                    "action": "wav_response",
+                    "say": "does_my_roof_become_your_companies.wav"
+                },
+                {
+                    "intent": "how much will i save with solar?",
+                    "action": "wav_response",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "how much do people save with solar?",
+                    "action": "wav_response",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "what type of solar is it?",
+                    "action": "wav_response",
+                    "say": "what_type_of_solar.wav"
+                },
+                {
+                    "intent": "what is solar?",
+                    "action": "wav_response",
+                    "say": "whats_this_all_about.wav"
+                },
+                {
+                    "intent": "whats company are you?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "where you calling from?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "who are you?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "what's your name?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "what's your website?",
+                    "action": "wav_response",
+                    "say": "im_new_at_this_job.wav"
+                },
+                {
+                    "intent": "why do you need my surname?",
+                    "action": "wav_response",
+                    "say": "why_u_need_my_name.wav"
+                },
+                {
+                    "intent": "how did you get my details?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "how did you get my number?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "how did you get my information?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "don't you already have my details?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "why am i eligible?",
+                    "action": "wav_response",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "who's eligible?",
+                    "action": "wav_response",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "how do you become eligible?",
+                    "action": "wav_response",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "we're council",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "this is a council property",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "we're rented",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "we're in a rented property",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "your calling a business",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i've already got solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "abuse",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                }
+            ],
+            "fallback": [
+                {
+                    "action": "wav_response",
+                    "say": "3sol.wav"
+                }
+            ]
+        },
+        {
+            "prompt": "4sol",
+            "fulfil": [
+                {
+                    "intent": "no haven't had one yet",
+                    "action": "wav_response",
+                    "say": "4sol.wav"
+                },
+                {
+                    "intent": "no",
+                    "action": "wav_response",
+                    "say": "4sol.wav"
+                },
+                {
+                    "intent": "not yet",
+                    "action": "wav_response",
+                    "say": "4sol.wav"
+                },
+                {
+                    "intent": "never thought about it",
+                    "action": "wav_response",
+                    "say": "4sol.wav"
+                },
+                {
+                    "intent": "yes but it was too expensive",
+                    "action": "wav_response",
+                    "say": "4sol.wav"
+                },
+                {
+                    "intent": "happy",
+                    "action": "wav_response",
+                    "say": "4sol.wav"
+                },
+                {
+                    "intent": "am i eligible",
+                    "action": "wav_response",
+                    "say": "4sol.wav"
+                },
+                {
+                    "intent": "what do you mean",
+                    "action": "wav_response",
+                    "say": "4sol.wav"
+                },
+                {
+                    "intent": "whats this call about",
+                    "action": "wav_response",
+                    "say": "4sol.wav"
+                },
+                {
+                    "intent": "what is that",
+                    "action": "wav_response",
+                    "say": "4sol.wav"
+                },
+                {
+                    "intent": "affirm",
+                    "action": "wav_response",
+                    "say": "4sol.wav"
+                },
+                {
+                    "intent": "agree",
+                    "action": "wav_response",
+                    "say": "4sol.wav"
+                },
+                {
+                    "intent": "how does it work",
+                    "action": "wav_response",
+                    "say": "4sol.wav"
+                },
+                {
+                    "intent": "Yes we might consider it",
+                    "action": "wav_response",
+                    "say": "4sol.wav"
+                },
+                {
+                    "intent": "Maybe in the future",
+                    "action": "wav_response",
+                    "say": "4sol.wav"
+                }
+            ],
+            "objections": [
+                {
+                    "intent": "sorry i can't hear, say that again?",
+                    "action": "wav_response",
+                    "say": "3sol.wav"
+                },
+                {
+                    "intent": "sorry, pardon what did you say?",
+                    "action": "wav_response",
+                    "say": "3sol.wav"
+                },
+                {
+                    "intent": "i'm not interested",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i don't want solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i can't afford",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "Our roof is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "our property is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my home is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my roof is not facing the right direction",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my roof doesn’t get enough sunlight",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "return on investment?",
+                    "action": "wav_response",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "cost of the solar?",
+                    "action": "wav_response",
+                    "say": "how_much_is_it.wav"
+                },
+                {
+                    "intent": "is there any obligation",
+                    "action": "wav_response",
+                    "say": "no_obligation.wav"
+                },
+                {
+                    "intent": "is solar free?",
+                    "action": "wav_response",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "is this with the council?",
+                    "action": "wav_response",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "is this with the goverment?",
+                    "action": "wav_response",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "how long does the survey take?",
+                    "action": "wav_response",
+                    "say": "how_long_is_survey.wav"
+                },
+                {
+                    "intent": "do i still own my roof or does your company own it?",
+                    "action": "wav_response",
+                    "say": "does_my_roof_become_your_companies.wav"
+                },
+                {
+                    "intent": "how much will i save with solar?",
+                    "action": "wav_response",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "how much do people save with solar?",
+                    "action": "wav_response",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "what type of solar is it?",
+                    "action": "wav_response",
+                    "say": "what_type_of_solar.wav"
+                },
+                {
+                    "intent": "what is solar?",
+                    "action": "wav_response",
+                    "say": "whats_this_all_about.wav"
+                },
+                {
+                    "intent": "whats company are you?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "where you calling from?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "who are you?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "what's your name?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "what's your website?",
+                    "action": "wav_response",
+                    "say": "im_new_at_this_job.wav"
+                },
+                {
+                    "intent": "why do you need my surname?",
+                    "action": "wav_response",
+                    "say": "why_u_need_my_name.wav"
+                },
+                {
+                    "intent": "how did you get my details?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "how did you get my number?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "how did you get my information?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "don't you already have my details?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "why am i eligible?",
+                    "action": "wav_response",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "who's eligible?",
+                    "action": "wav_response",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "how do you become eligible?",
+                    "action": "wav_response",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "we're council",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "this is a council property",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "we're rented",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "we're in a rented property",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "your calling a business",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i've already got solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "abuse",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                }
+            ],
+            "fallback": [
+                {
+                    "action": "wav_response",
+                    "say": "4sol.wav"
+                }
+            ]
+        },
+        {
+            "prompt": "5sol",
+            "fulfil": [
+                {
+                    "intent": "a bungalow",
+                    "action": "wav_response",
+                    "say": "5sol.wav"
+                },
+                {
+                    "intent": "a house",
+                    "action": "wav_response",
+                    "say": "5sol.wav"
+                },
+                {
+                    "intent": "semi detatched",
+                    "action": "wav_response",
+                    "say": "5sol.wav"
+                },
+                {
+                    "intent": "terrace property",
+                    "action": "wav_response",
+                    "say": "5sol.wav"
+                },
+                {
+                    "intent": "happy",
+                    "action": "wav_response",
+                    "say": "5sol.wav"
+                },
+                {
+                    "intent": "am i eligible",
+                    "action": "wav_response",
+                    "say": "5sol.wav"
+                },
+                {
+                    "intent": "what do you mean",
+                    "action": "wav_response",
+                    "say": "5sol.wav"
+                },
+                {
+                    "intent": "whats this call about",
+                    "action": "wav_response",
+                    "say": "5sol.wav"
+                },
+                {
+                    "intent": "what is that",
+                    "action": "wav_response",
+                    "say": "5sol.wav"
+                },
+                {
+                    "intent": "affirm",
+                    "action": "wav_response",
+                    "say": "3sol.wav"
+                },
+                {
+                    "intent": "agree",
+                    "action": "wav_response",
+                    "say": "5sol.wav"
+                },
+                {
+                    "intent": "good day",
+                    "action": "wav_response",
+                    "say": "5sol.wav"
+                },
+                {
+                    "intent": "how does it work",
+                    "action": "wav_response",
+                    "say": "5sol.wav"
+                },
+                {
+                    "intent": "Yes we might consider it",
+                    "action": "wav_response",
+                    "say": "5sol.wav"
+                },
+                {
+                    "intent": "Maybe in the future",
+                    "action": "wav_response",
+                    "say": "5sol.wav"
+                }
+            ],
+            "objections": [
+                {
+                    "intent": "sorry i can't hear, say that again?",
+                    "action": "wav_response",
+                    "say": "4sol.wav"
+                },
+                {
+                    "intent": "sorry, pardon what did you say?",
+                    "action": "wav_response",
+                    "say": "4sol.wav"
+                },
+                {
+                    "intent": "i live in a flat",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i live in a mobile home",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i live in a caravan",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i live in sheltered accommodation",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i'm not interested",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i don't want solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i can't afford",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "Our roof is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "our property is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my home is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my roof is not facing the right direction",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my roof doesn’t get enough sunlight",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "return on investment?",
+                    "action": "wav_response",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "cost of the solar?",
+                    "action": "wav_response",
+                    "say": "how_much_is_it.wav"
+                },
+                {
+                    "intent": "is there any obligation",
+                    "action": "wav_response",
+                    "say": "no_obligation.wav"
+                },
+                {
+                    "intent": "is solar free?",
+                    "action": "wav_response",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "is this with the council?",
+                    "action": "wav_response",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "is this with the goverment?",
+                    "action": "wav_response",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "how long does the survey take?",
+                    "action": "wav_response",
+                    "say": "how_long_is_survey.wav"
+                },
+                {
+                    "intent": "do i still own my roof or does your company own it?",
+                    "action": "wav_response",
+                    "say": "does_my_roof_become_your_companies.wav"
+                },
+                {
+                    "intent": "how much will i save with solar?",
+                    "action": "wav_response",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "how much do people save with solar?",
+                    "action": "wav_response",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "what type of solar is it?",
+                    "action": "wav_response",
+                    "say": "what_type_of_solar.wav"
+                },
+                {
+                    "intent": "what is solar?",
+                    "action": "wav_response",
+                    "say": "whats_this_all_about.wav"
+                },
+                {
+                    "intent": "whats company are you?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "where you calling from?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "who are you?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "what's your name?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "what's your website?",
+                    "action": "wav_response",
+                    "say": "im_new_at_this_job.wav"
+                },
+                {
+                    "intent": "why do you need my surname?",
+                    "action": "wav_response",
+                    "say": "why_u_need_my_name.wav"
+                },
+                {
+                    "intent": "how did you get my details?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "how did you get my number?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "how did you get my information?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "don't you already have my details?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "why am i eligible?",
+                    "action": "wav_response",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "who's eligible?",
+                    "action": "wav_response",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "how do you become eligible?",
+                    "action": "wav_response",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "we're council",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "this is a council property",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "we're rented",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "we're in a rented property",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "your calling a business",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i've already got solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "abuse",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                }
+            ],
+            "fallback": [
+                {
+                    "action": "wav_response",
+                    "say": "5sol.wav"
+                }
+            ]
+        },
+        {
+            "prompt": "6sol",
+            "fulfil": [
+                {
+                    "intent": "age",
+                    "action": "wav_response",
+                    "say": "6sol.wav"
+                },
+                {
+                    "intent": "number",
+                    "action": "wav_response",
+                    "say": "6sol.wav"
+                },
+                {
+                    "intent": "happy",
+                    "action": "wav_response",
+                    "say": "6sol.wav"
+                },
+                {
+                    "intent": "am i eligible",
+                    "action": "wav_response",
+                    "say": "6sol.wav"
+                },
+                {
+                    "intent": "what do you mean",
+                    "action": "wav_response",
+                    "say": "6sol.wav"
+                },
+                {
+                    "intent": "whats this call about",
+                    "action": "wav_response",
+                    "say": "6sol.wav"
+                },
+                {
+                    "intent": "what is that",
+                    "action": "wav_response",
+                    "say": "6sol.wav"
+                },
+                {
+                    "intent": "affirm",
+                    "action": "wav_response",
+                    "say": "6sol.wav"
+                },
+                {
+                    "intent": "agree",
+                    "action": "wav_response",
+                    "say": "6sol.wav"
+                },
+                {
+                    "intent": "good day",
+                    "action": "wav_response",
+                    "say": "6sol.wav"
+                },
+                {
+                    "intent": "how does it work",
+                    "action": "wav_response",
+                    "say": "6sol.wav"
+                },
+                {
+                    "intent": "Yes we might consider it",
+                    "action": "wav_response",
+                    "say": "6sol.wav"
+                },
+                {
+                    "intent": "Maybe in the future",
+                    "action": "wav_response",
+                    "say": "6sol.wav"
+                }
+            ],
+            "objections": [
+                {
+                    "intent": "sorry i can't hear, say that again?",
+                    "action": "wav_response",
+                    "say": "5sol.wav"
+                },
+                {
+                    "intent": "sorry, pardon what did you say?",
+                    "action": "wav_response",
+                    "say": "5sol.wav"
+                },
+                {
+                    "intent": "why do you need my age",
+                    "action": "wav_response_hangup",
+                    "say": "why_u_need_my_age.wav"
+                },
+                {
+                    "intent": "why does my age matter",
+                    "action": "wav_response_hangup",
+                    "say": "why_u_need_my_age.wav"
+                },
+                {
+                    "intent": "i'm not telling you my age",
+                    "action": "wav_response_hangup",
+                    "say": "why_u_need_my_age.wav"
+                },
+                {
+                    "intent": "i'm not interested",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i don't want solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i can't afford",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "Our roof is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "our property is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my home is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my roof is not facing the right direction",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my roof doesn’t get enough sunlight",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "return on investment?",
+                    "action": "wav_response",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "cost of the solar?",
+                    "action": "wav_response",
+                    "say": "how_much_is_it.wav"
+                },
+                {
+                    "intent": "is there any obligation",
+                    "action": "wav_response",
+                    "say": "no_obligation.wav"
+                },
+                {
+                    "intent": "is solar free?",
+                    "action": "wav_response",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "is this with the council?",
+                    "action": "wav_response",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "is this with the goverment?",
+                    "action": "wav_response",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "how long does the survey take?",
+                    "action": "wav_response",
+                    "say": "how_long_is_survey.wav"
+                },
+                {
+                    "intent": "do i still own my roof or does your company own it?",
+                    "action": "wav_response",
+                    "say": "does_my_roof_become_your_companies.wav"
+                },
+                {
+                    "intent": "how much will i save with solar?",
+                    "action": "wav_response",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "how much do people save with solar?",
+                    "action": "wav_response",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "what type of solar is it?",
+                    "action": "wav_response",
+                    "say": "what_type_of_solar.wav"
+                },
+                {
+                    "intent": "what is solar?",
+                    "action": "wav_response",
+                    "say": "whats_this_all_about.wav"
+                },
+                {
+                    "intent": "whats company are you?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "where you calling from?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "who are you?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "what's your name?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "what's your website?",
+                    "action": "wav_response",
+                    "say": "im_new_at_this_job.wav"
+                },
+                {
+                    "intent": "why do you need my surname?",
+                    "action": "wav_response",
+                    "say": "why_u_need_my_name.wav"
+                },
+                {
+                    "intent": "how did you get my details?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "how did you get my number?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "how did you get my information?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "don't you already have my details?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "why am i eligible?",
+                    "action": "wav_response",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "who's eligible?",
+                    "action": "wav_response",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "how do you become eligible?",
+                    "action": "wav_response",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "we're council",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "this is a council property",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "we're rented",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "we're in a rented property",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "your calling a business",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i've already got solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "abuse",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                }
+            ],
+            "fallback": [
+                {
+                    "action": "wav_response",
+                    "say": "6sol.wav"
+                }
+            ]
+        },
+        {
+            "prompt": "7sol",
+            "fulfil": [
+                {
+                    "intent": "my name is",
+                    "action": "wav_response",
+                    "say": "7sol.wav"
+                },
+                {
+                    "intent": "my surname is",
+                    "action": "wav_response",
+                    "say": "7sol.wav"
+                },
+                {
+                    "intent": "my surnames is spelt",
+                    "action": "wav_response",
+                    "say": "7sol.wav"
+                },
+                {
+                    "intent": "its spelt",
+                    "action": "wav_response",
+                    "say": "7sol.wav"
+                },
+                {
+                    "intent": "happy",
+                    "action": "wav_response",
+                    "say": "7sol.wav"
+                },
+                {
+                    "intent": "am i eligible",
+                    "action": "wav_response",
+                    "say": "7sol.wav"
+                },
+                {
+                    "intent": "what do you mean",
+                    "action": "wav_response",
+                    "say": "7sol.wav"
+                },
+                {
+                    "intent": "whats this call about",
+                    "action": "wav_response",
+                    "say": "7sol.wav"
+                },
+                {
+                    "intent": "what is that",
+                    "action": "wav_response",
+                    "say": "7sol.wav"
+                },
+                {
+                    "intent": "yes im older than seventy years old",
+                    "action": "wav_response",
+                    "say": "7sol.wav"
+                },
+                {
+                    "intent": "affirm",
+                    "action": "wav_response",
+                    "say": "7sol.wav"
+                },
+                {
+                    "intent": "agree",
+                    "action": "wav_response",
+                    "say": "7sol.wav"
+                },
+                {
+                    "intent": "good day",
+                    "action": "wav_response",
+                    "say": "7sol.wav"
+                },
+                {
+                    "intent": "how does it work",
+                    "action": "wav_response",
+                    "say": "7sol.wav"
+                },
+                {
+                    "intent": "Yes we might consider it",
+                    "action": "wav_response",
+                    "say": "7sol.wav"
+                },
+                {
+                    "intent": "Maybe in the future",
+                    "action": "wav_response",
+                    "say": "7sol.wav"
+                }
+            ],
+            "objections": [
+                {
+                    "intent": "sorry i can't hear, say that again?",
+                    "action": "wav_response",
+                    "say": "6sol.wav"
+                },
+                {
+                    "intent": "sorry, pardon what did you say?",
+                    "action": "wav_response",
+                    "say": "6sol.wav"
+                },
+                {
+                    "intent": "why do you need my surname?",
+                    "action": "wav_response",
+                    "say": "surname_rebut.wav"
+                },
+                {
+                    "intent": "what you got there?",
+                    "action": "wav_response",
+                    "say": "surname_rebut.wav"
+                },
+                {
+                    "intent": "what have you got?",
+                    "action": "wav_response",
+                    "say": "surname_rebut.wav"
+                },
+                {
+                    "intent": "why do you need it?",
+                    "action": "wav_response",
+                    "say": "surname_rebut.wav"
+                },
+                {
+                    "intent": "tell me what you got?",
+                    "action": "wav_response",
+                    "say": "surname_rebut.wav"
+                },
+                {
+                    "intent": "you tell me",
+                    "action": "wav_response",
+                    "say": "surname_rebut.wav"
+                },
+                {
+                    "intent": "i don't want to give you my surname",
+                    "action": "wav_response",
+                    "say": "surname_rebut.wav"
+                },
+                {
+                    "intent": "why can you not spell this",
+                    "action": "wav_response",
+                    "say": "surname_rebut.wav"
+                },
+                {
+                    "intent": "tell me what my surname is please",
+                    "action": "wav_response",
+                    "say": "surname_rebut.wav"
+                },
+                {
+                    "intent": "no because i don't know who you are",
+                    "action": "wav_response",
+                    "say": "surname_rebut.wav"
+                },
+                {
+                    "intent": "you might be a scam",
+                    "action": "wav_response",
+                    "say": "surname_rebut.wav"
+                },
+                {
+                    "intent": "why?",
+                    "action": "wav_response",
+                    "say": "surname_rebut.wav"
+                },
+                {
+                    "intent": "no i'm not giving out my information over the phone",
+                    "action": "wav_response",
+                    "say": "surname_rebut.wav"
+                },
+                {
+                    "intent": "i'm very weary",
+                    "action": "wav_response",
+                    "say": "surname_rebut.wav"
+                },
+                {
+                    "intent": "i need to talk to my husband first",
+                    "action": "wav_response",
+                    "say": "surname_rebut.wav"
+                },
+                {
+                    "intent": "i need to talk to my wife first",
+                    "action": "wav_response",
+                    "say": "surname_rebut.wav"
+                },
+                {
+                    "intent": "don't you know my suranme?",
+                    "action": "wav_response",
+                    "say": "surname_rebut.wav"
+                },
+                {
+                    "intent": "well you called me you know who i am",
+                    "action": "wav_response",
+                    "say": "surname_rebut.wav"
+                },
+                {
+                    "intent": "i'm not interested",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i don't want solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i can't afford",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "Our roof is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "our property is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my home is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my roof is not facing the right direction",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my roof doesn’t get enough sunlight",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "return on investment?",
+                    "action": "wav_response",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "cost of the solar?",
+                    "action": "wav_response",
+                    "say": "how_much_is_it.wav"
+                },
+                {
+                    "intent": "is there any obligation",
+                    "action": "wav_response",
+                    "say": "no_obligation.wav"
+                },
+                {
+                    "intent": "is solar free?",
+                    "action": "wav_response",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "is this with the council?",
+                    "action": "wav_response",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "is this with the goverment?",
+                    "action": "wav_response",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "how long does the survey take?",
+                    "action": "wav_response",
+                    "say": "how_long_is_survey.wav"
+                },
+                {
+                    "intent": "do i still own my roof or does your company own it?",
+                    "action": "wav_response",
+                    "say": "does_my_roof_become_your_companies.wav"
+                },
+                {
+                    "intent": "how much will i save with solar?",
+                    "action": "wav_response",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "how much do people save with solar?",
+                    "action": "wav_response",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "what type of solar is it?",
+                    "action": "wav_response",
+                    "say": "what_type_of_solar.wav"
+                },
+                {
+                    "intent": "what is solar?",
+                    "action": "wav_response",
+                    "say": "whats_this_all_about.wav"
+                },
+                {
+                    "intent": "whats company are you?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "where you calling from?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "who are you?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "what's your name?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "what's your website?",
+                    "action": "wav_response",
+                    "say": "im_new_at_this_job.wav"
+                },
+                {
+                    "intent": "why do you need my surname?",
+                    "action": "wav_response",
+                    "say": "why_u_need_my_name.wav"
+                },
+                {
+                    "intent": "how did you get my details?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "how did you get my number?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "how did you get my information?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "don't you already have my details?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "why am i eligible?",
+                    "action": "wav_response",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "who's eligible?",
+                    "action": "wav_response",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "how do you become eligible?",
+                    "action": "wav_response",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "we're council",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "this is a council property",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "we're rented",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "we're in a rented property",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "your calling a business",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i've already got solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "abuse",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                }
+            ],
+            "fallback": [
+                {
+                    "action": "wav_response",
+                    "say": "7sol.wav"
+                }
+            ]
+        },
+        {
+            "prompt": "8sol",
+            "fulfil": [
+                {
+                    "intent": "happy",
+                    "action": "live_transfer",
+                    "say": "8sol.wav"
+                },
+                {
+                    "intent": "am i eligible",
+                    "action": "live_transfer",
+                    "say": "8sol.wav"
+                },
+                {
+                    "intent": "what do you mean",
+                    "action": "live_transfer",
+                    "say": "8sol.wav"
+                },
+                {
+                    "intent": "whats this call about",
+                    "action": "live_transfer",
+                    "say": "8sol.wav"
+                },
+                {
+                    "intent": "what is that",
+                    "action": "live_transfer",
+                    "say": "8sol.wav"
+                },
+                {
+                    "intent": "affirm",
+                    "action": "live_transfer",
+                    "say": "8sol.wav"
+                },
+                {
+                    "intent": "agree",
+                    "action": "live_transfer",
+                    "say": "8sol.wav"
+                },
+                {
+                    "intent": "how does it work",
+                    "action": "live_transfer",
+                    "say": "8sol.wav"
+                },
+                {
+                    "intent": "Yes we might consider it",
+                    "action": "live_transfer",
+                    "say": "8sol.wav"
+                },
+                {
+                    "intent": "Maybe in the future",
+                    "action": "live_transfer",
+                    "say": "8sol.wav"
+                }
+            ],
+            "objections": [
+                {
+                    "intent": "sorry i can't hear, say that again?",
+                    "action": "wav_response",
+                    "say": "7sol.wav"
+                },
+                {
+                    "intent": "sorry, pardon what did you say?",
+                    "action": "live_transfer",
+                    "say": "7sol.wav"
+                },
+                {
+                    "intent": "i'm unavailable for a call back right now",
+                    "action": "live_transfer",
+                    "say": "what_time_best_4_CB.wav"
+                },
+                {
+                    "intent": "i'm just about to go out",
+                    "action": "live_transfer",
+                    "say": "what_time_best_4_CB.wav"
+                },
+                {
+                    "intent": "i'm not interested",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i don't want solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i can't afford",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "Our roof is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "our property is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my home is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my roof is not facing the right direction",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my roof doesn’t get enough sunlight",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "return on investment?",
+                    "action": "live_transfer",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "cost of the solar?",
+                    "action": "live_transfer",
+                    "say": "how_much_is_it.wav"
+                },
+                {
+                    "intent": "is there any obligation",
+                    "action": "live_transfer",
+                    "say": "no_obligation.wav"
+                },
+                {
+                    "intent": "is solar free?",
+                    "action": "live_transfer",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "is this with the council?",
+                    "action": "live_transfer",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "is this with the goverment?",
+                    "action": "live_transfer",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "how long does the survey take?",
+                    "action": "live_transfer",
+                    "say": "how_long_is_survey.wav"
+                },
+                {
+                    "intent": "do i still own my roof or does your company own it?",
+                    "action": "live_transfer",
+                    "say": "does_my_roof_become_your_companies.wav"
+                },
+                {
+                    "intent": "how much will i save with solar?",
+                    "action": "live_transfer",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "how much do people save with solar?",
+                    "action": "live_transfer",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "what type of solar is it?",
+                    "action": "live_transfer",
+                    "say": "what_type_of_solar.wav"
+                },
+                {
+                    "intent": "what is solar?",
+                    "action": "live_transfer",
+                    "say": "whats_this_all_about.wav"
+                },
+                {
+                    "intent": "whats company are you?",
+                    "action": "live_transfer",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "where you calling from?",
+                    "action": "live_transfer",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "who are you?",
+                    "action": "live_transfer",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "what's your name?",
+                    "action": "live_transfer",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "what's your website?",
+                    "action": "live_transfer",
+                    "say": "im_new_at_this_job.wav"
+                },
+                {
+                    "intent": "why do you need my surname?",
+                    "action": "live_transfer",
+                    "say": "why_u_need_my_name.wav"
+                },
+                {
+                    "intent": "how did you get my details?",
+                    "action": "live_transfer",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "how did you get my number?",
+                    "action": "live_transfer",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "how did you get my information?",
+                    "action": "live_transfer",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "don't you already have my details?",
+                    "action": "live_transfer",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "why am i eligible?",
+                    "action": "live_transfer",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "who's eligible?",
+                    "action": "live_transfer",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "how do you become eligible?",
+                    "action": "live_transfer",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "we're council",
+                    "action": "live_transfer",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "this is a council property",
+                    "action": "live_transfer",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "we're rented",
+                    "action": "live_transfer",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "we're in a rented property",
+                    "action": "live_transfer",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "your calling a business",
+                    "action": "live_transfer",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i've already got solar",
+                    "action": "live_transfer",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "abuse",
+                    "action": "live_transfer",
+                    "say": "NI_endCall.wav"
+                }
+            ],
+            "fallback": [
+                {
+                    "action": "wav_response",
+                    "say": "8sol.wav"
+                }
+            ]
+        },
+        {
+            "prompt": "9sol",
+            "fulfil": [
+                {
+                    "intent": "thankyou bye",
+                    "action": "wav_response",
+                    "say": "9sol.wav"
+                },
+                {
+                    "intent": "bye",
+                    "action": "wav_response",
+                    "say": "9sol.wav"
+                },
+                {
+                    "intent": "happy",
+                    "action": "wav_response",
+                    "say": "9sol.wav"
+                },
+                {
+                    "intent": "affirm",
+                    "action": "wav_response",
+                    "say": "9sol.wav"
+                },
+                {
+                    "intent": "agree",
+                    "action": "wav_response",
+                    "say": "9sol.wav"
+                },
+                {
+                    "intent": "good day",
+                    "action": "wav_response",
+                    "say": "9sol.wav"
+                },
+                {
+                    "intent": "how does it work",
+                    "action": "wav_response",
+                    "say": "9sol.wav"
+                },
+                {
+                    "intent": "Yes we might consider it",
+                    "action": "wav_response",
+                    "say": "9sol.wav"
+                },
+                {
+                    "intent": "Maybe in the future",
+                    "action": "wav_response",
+                    "say": "9sol.wav"
+                }
+            ],
+            "objections": [
+                {
+                    "intent": "sorry i can't hear, say that again?",
+                    "action": "wav_response",
+                    "say": "8sol.wav"
+                },
+                {
+                    "intent": "sorry, pardon what did you say?",
+                    "action": "wav_response",
+                    "say": "8sol.wav"
+                },
+                {
+                    "intent": "i'm not interested",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i don't want solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i can't afford",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "Our roof is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "our property is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my home is not suitable for solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my roof is not facing the right direction",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "my roof doesn’t get enough sunlight",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "return on investment?",
+                    "action": "wav_response",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "cost of the solar?",
+                    "action": "wav_response",
+                    "say": "how_much_is_it.wav"
+                },
+                {
+                    "intent": "is there any obligation",
+                    "action": "wav_response",
+                    "say": "no_obligation.wav"
+                },
+                {
+                    "intent": "is solar free?",
+                    "action": "wav_response",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "is this with the council?",
+                    "action": "wav_response",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "is this with the goverment?",
+                    "action": "wav_response",
+                    "say": "is_the_survey_free.wav"
+                },
+                {
+                    "intent": "how long does the survey take?",
+                    "action": "wav_response",
+                    "say": "how_long_is_survey.wav"
+                },
+                {
+                    "intent": "do i still own my roof or does your company own it?",
+                    "action": "wav_response",
+                    "say": "does_my_roof_become_your_companies.wav"
+                },
+                {
+                    "intent": "how much will i save with solar?",
+                    "action": "wav_response",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "how much do people save with solar?",
+                    "action": "wav_response",
+                    "say": "savings_with_solar.wav"
+                },
+                {
+                    "intent": "what type of solar is it?",
+                    "action": "wav_response",
+                    "say": "what_type_of_solar.wav"
+                },
+                {
+                    "intent": "what is solar?",
+                    "action": "wav_response",
+                    "say": "whats_this_all_about.wav"
+                },
+                {
+                    "intent": "whats company are you?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "where you calling from?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "who are you?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "what's your name?",
+                    "action": "wav_response",
+                    "say": "my_names_jane.wav"
+                },
+                {
+                    "intent": "what's your website?",
+                    "action": "wav_response",
+                    "say": "im_new_at_this_job.wav"
+                },
+                {
+                    "intent": "why do you need my surname?",
+                    "action": "wav_response",
+                    "say": "why_u_need_my_name.wav"
+                },
+                {
+                    "intent": "how did you get my details?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "how did you get my number?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "how did you get my information?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "don't you already have my details?",
+                    "action": "wav_response",
+                    "say": "where_did_u_get_my_info.wav"
+                },
+                {
+                    "intent": "why am i eligible?",
+                    "action": "wav_response",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "who's eligible?",
+                    "action": "wav_response",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "how do you become eligible?",
+                    "action": "wav_response",
+                    "say": "why_am_i_eligible.wav"
+                },
+                {
+                    "intent": "we're council",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "this is a council property",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "we're rented",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "we're in a rented property",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "your calling a business",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "i've already got solar",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                },
+                {
+                    "intent": "abuse",
+                    "action": "wav_response_hangup",
+                    "say": "NI_endCall.wav"
+                }
+            ],
+            "fallback": [
+                {
+                    "action": "wav_response",
+                    "say": "9sol.wav"
+                }
+            ]
+        }
+    ]
+}
+
+
