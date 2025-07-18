@@ -4,9 +4,18 @@ import logging
 from typing import Dict, List, Optional, Tuple
 import random
 from faiss_matcher import get_faiss_matcher
+from fuzzywuzzy import fuzz
+import re
 
-# Configure logging
-logging.basicConfig(level=logging.INFO)
+# Configure logging for both console and file
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('intent_matcher.log'),
+        logging.StreamHandler()
+    ]
+)
 logger = logging.getLogger(__name__)
 
 # Load spaCy model (kept for keyword matching fallback)
@@ -31,9 +40,12 @@ except json.JSONDecodeError as e:
     raise
 
 # Configuration constants
-OBJECTION_THRESHOLD = 0.7  # Minimum similarity score for objection matching
-FULFIL_THRESHOLD = 0.3     # Minimum similarity score for fulfil matching
-DEFAULT_CONFIDENCE = 0.8   # Confidence for direct fulfil responses
+OBJECTION_THRESHOLD_HANGUP = 0.65  # Minimum similarity score for wav_response_hangup objections
+OBJECTION_THRESHOLD_REGULAR = 0.7  # Minimum similarity score for other objections
+FULFIL_THRESHOLD = 0.7             # Minimum similarity score for fulfil matching
+DEFAULT_CONFIDENCE = 0.8           # Confidence for direct fulfil responses
+FUZZY_WEIGHT = 0.3                 # Weight for fuzzy matching (30%)
+SBERT_WEIGHT = 0.7                 # Weight for SBERT matching (70%)
 
 # Initialize FAISS matcher
 _faiss_matcher = None
@@ -44,6 +56,159 @@ def get_matcher():
     if _faiss_matcher is None:
         _faiss_matcher = get_faiss_matcher()
     return _faiss_matcher
+
+def preprocess_text(text: str) -> str:
+    """
+    Preprocess text with typo correction and normalization.
+    
+    Args:
+        text: Raw input text
+        
+    Returns:
+        Preprocessed text with typos corrected
+    """
+    # Convert to lowercase for processing
+    text = text.lower().strip()
+    
+    # Common typo corrections
+    typo_corrections = {
+        'solo': 'solar',
+        'soler': 'solar',
+        'solor': 'solar',
+        'solars': 'solar',
+        'panals': 'panels',
+        'panles': 'panels',
+        'expencive': 'expensive',
+        'expensiv': 'expensive',
+        'dont': "don't",
+        'wont': "won't",
+        'cant': "can't",
+        'im': "i'm",
+        'youre': "you're",
+        'thats': "that's",
+        'its': "it's",
+        'voicemal': 'voicemail',
+        'voicmail': 'voicemail',
+        'telefone': 'telephone',
+        'tps': 'TPS'
+    }
+    
+    # Apply typo corrections
+    for typo, correction in typo_corrections.items():
+        text = re.sub(r'\b' + typo + r'\b', correction, text)
+    
+    logger.debug(f"Preprocessed text: '{text}'")
+    return text
+
+def calculate_hybrid_similarity(text1: str, text2: str) -> Tuple[float, Dict]:
+    """
+    Calculate hybrid similarity combining fuzzy matching with SBERT similarity.
+    
+    Args:
+        text1: First text to compare
+        text2: Second text to compare
+        
+    Returns:
+        Tuple of (combined_score, score_breakdown)
+    """
+    try:
+        # Fuzzy matching score
+        fuzzy_score = fuzz.token_sort_ratio(text1, text2) / 100.0
+        
+        # SBERT similarity using FAISS matcher
+        matcher = get_matcher()
+        # Get SBERT embedding similarity
+        user_embedding = matcher.model.encode([text1])
+        intent_embedding = matcher.model.encode([text2])
+        
+        import numpy as np
+        import faiss
+        
+        # Normalize embeddings
+        faiss.normalize_L2(user_embedding)
+        faiss.normalize_L2(intent_embedding)
+        
+        # Calculate cosine similarity
+        sbert_score = float(np.dot(user_embedding[0], intent_embedding[0]))
+        
+        # Combine scores with weights
+        combined_score = (fuzzy_score * FUZZY_WEIGHT) + (sbert_score * SBERT_WEIGHT)
+        
+        score_breakdown = {
+            'fuzzy_score': fuzzy_score,
+            'sbert_score': sbert_score,
+            'combined_score': combined_score
+        }
+        
+        logger.debug(f"Hybrid similarity: {text1} vs {text2} -> Fuzzy: {fuzzy_score:.3f}, SBERT: {sbert_score:.3f}, Combined: {combined_score:.3f}")
+        
+        return combined_score, score_breakdown
+        
+    except Exception as e:
+        logger.error(f"Error calculating hybrid similarity: {e}")
+        return 0.0, {'fuzzy_score': 0.0, 'sbert_score': 0.0, 'combined_score': 0.0}
+
+def find_best_objection_match_faiss(user_text: str, objections: List[Dict]) -> Tuple[Optional[Dict], float, Dict]:
+    """
+    Find the best matching objection using FAISS+SBERT with fuzzy matching.
+    
+    Args:
+        user_text: The user's input text
+        objections: List of objection definitions
+        
+    Returns:
+        Tuple of (best_objection, confidence_score, score_breakdown)
+    """
+    best_match = None
+    best_score = 0.0
+    best_breakdown = {}
+    
+    for objection in objections:
+        intent_text = objection.get('intent', '')
+        if not intent_text:
+            continue
+            
+        # Calculate hybrid similarity
+        similarity, breakdown = calculate_hybrid_similarity(user_text, intent_text)
+        
+        if similarity > best_score:
+            best_score = similarity
+            best_match = objection
+            best_breakdown = breakdown
+    
+    logger.info(f"Best objection match: {best_match.get('intent', 'None') if best_match else 'None'} with score {best_score:.3f}")
+    return best_match, best_score, best_breakdown
+
+def find_best_fulfil_match_faiss(user_text: str, fulfil_list: List[Dict]) -> Tuple[Optional[Dict], float, Dict]:
+    """
+    Find the best matching fulfil response using FAISS+SBERT with fuzzy matching.
+    
+    Args:
+        user_text: The user's input text
+        fulfil_list: List of fulfil definitions
+        
+    Returns:
+        Tuple of (best_fulfil, confidence_score, score_breakdown)
+    """
+    best_match = None
+    best_score = 0.0
+    best_breakdown = {}
+    
+    for fulfil in fulfil_list:
+        intent_text = fulfil.get('intent', '')
+        if not intent_text or intent_text == '_default_':
+            continue
+            
+        # Calculate hybrid similarity
+        similarity, breakdown = calculate_hybrid_similarity(user_text, intent_text)
+        
+        if similarity > best_score:
+            best_score = similarity
+            best_match = fulfil
+            best_breakdown = breakdown
+    
+    logger.info(f"Best fulfil match: {best_match.get('intent', 'None') if best_match else 'None'} with score {best_score:.3f}")
+    return best_match, best_score, best_breakdown
 
 def get_prompt_data(prompt: str) -> Optional[Dict]:
     """
@@ -60,7 +225,7 @@ def get_prompt_data(prompt: str) -> Optional[Dict]:
 def calculate_keyword_similarity(text1: str, text2: str) -> float:
     """
     Calculate keyword-based similarity for better intent matching.
-    Preserved for objections and special handling.
+    Preserved for special cases.
     
     Args:
         text1: First text to compare
@@ -161,35 +326,9 @@ def calculate_similarity_fallback(text1: str, text2: str) -> float:
         logger.error(f"Error calculating similarity: {e}")
         return 0.0
 
-def find_best_objection_match_keyword(user_text: str, objections: List[Dict]) -> Tuple[Optional[Dict], float]:
-    """
-    Find the best matching objection using keyword-based matching.
-    Preserved for special objection handling.
-    
-    Args:
-        user_text: The user's input text
-        objections: List of objection definitions
-        
-    Returns:
-        Tuple of (best_objection, confidence_score)
-    """
-    best_match = None
-    best_score = 0.0
-    
-    for objection in objections:
-        intent_text = objection.get('intent', '')
-        
-        similarity = calculate_similarity_fallback(user_text, intent_text)
-        
-        if similarity > best_score:
-            best_score = similarity
-            best_match = objection
-                
-    return best_match, best_score
-
 def get_response(prompt: str, text: str) -> Dict:
     """
-    Get the appropriate response using hybrid FAISS+SBERT and keyword matching.
+    Get the appropriate response using improved hybrid matching with typo correction.
     
     Args:
         prompt: The current prompt identifier
@@ -198,7 +337,7 @@ def get_response(prompt: str, text: str) -> Dict:
     Returns:
         Dictionary containing action, say (WAV filename), confidence, and matched_intent
     """
-    logger.info(f"Processing request - Prompt: {prompt}, Text: {text}")
+    logger.info(f"Processing request - Prompt: {prompt}, Text: '{text}'")
     
     # Get prompt data
     prompt_data = get_prompt_data(prompt)
@@ -211,80 +350,67 @@ def get_response(prompt: str, text: str) -> Dict:
             "matched_intent": "unknown_prompt"
         }
     
-    # Clean and normalize user text
-    user_text = text.strip().lower()
+    # Preprocess text with typo correction
+    user_text = preprocess_text(text)
+    logger.info(f"Preprocessed text: '{user_text}'")
     
-    # PRIORITY 1: Check for objections using keyword matching (preserved for accuracy)
+    # PRIORITY 1: Check for objections using FAISS+SBERT+Fuzzy matching
     objections = prompt_data.get('objections', [])
     if objections:
-        best_objection, objection_score = find_best_objection_match_keyword(user_text, objections)
+        best_objection, objection_score, score_breakdown = find_best_objection_match_faiss(user_text, objections)
         
-        if best_objection and objection_score >= OBJECTION_THRESHOLD:
+        if best_objection:
             action = best_objection.get('action', 'wav_response')
-            wav_filename = best_objection.get('say', '')
-            intent = best_objection.get('intent', '')
             
-            logger.info(f"Matched objection (keyword): {intent} with score {objection_score}")
+            # Different thresholds based on action type
+            threshold = OBJECTION_THRESHOLD_HANGUP if action == 'wav_response_hangup' else OBJECTION_THRESHOLD_REGULAR
             
-            return {
-                "action": action,
-                "say": wav_filename,
-                "confidence": objection_score,
-                "matched_intent": intent
-            }
+            if objection_score >= threshold:
+                wav_filename = best_objection.get('say', '')
+                intent = best_objection.get('intent', '')
+                
+                logger.info(f"Matched objection: '{intent}' with score {objection_score:.3f} (threshold: {threshold})")
+                logger.info(f"Score breakdown - Fuzzy: {score_breakdown.get('fuzzy_score', 0):.3f}, SBERT: {score_breakdown.get('sbert_score', 0):.3f}")
+                
+                return {
+                    "action": action,
+                    "say": wav_filename,
+                    "confidence": objection_score,
+                    "matched_intent": intent
+                }
+            else:
+                logger.info(f"Objection score {objection_score:.3f} below threshold {threshold}, continuing to fulfil matching")
     
-    # PRIORITY 2: Use FAISS+SBERT for semantic matching
-    try:
-        matcher = get_matcher()
-        faiss_result = matcher.get_response(prompt, text)
-        
-        # If FAISS found a good match, use it
-        if faiss_result['confidence'] >= 0.65:
-            logger.info(f"FAISS matched: {faiss_result['matched_intent']} with confidence {faiss_result['confidence']}")
-            return faiss_result
-        else:
-            logger.info(f"FAISS confidence too low: {faiss_result['confidence']}, trying fallback")
-            
-    except Exception as e:
-        logger.error(f"Error in FAISS matching: {e}, falling back to keyword matching")
-    
-    # PRIORITY 3: Fallback to original keyword+spaCy matching for fulfil responses
+    # PRIORITY 2: Check for fulfil responses using FAISS+SBERT+Fuzzy matching
     fulfil_list = prompt_data.get('fulfil', [])
     if fulfil_list:
-        best_fulfil = None
-        best_score = 0.0
+        best_fulfil, fulfil_score, score_breakdown = find_best_fulfil_match_faiss(user_text, fulfil_list)
         
-        for fulfil in fulfil_list:
-            intent_text = fulfil.get('intent', '')
-            if intent_text and intent_text != '_default_':
-                similarity = calculate_similarity_fallback(user_text, intent_text)
-                
-                if similarity > best_score:
-                    best_score = similarity
-                    best_fulfil = fulfil
-        
-        if best_fulfil and best_score >= FULFIL_THRESHOLD:
+        if best_fulfil and fulfil_score >= FULFIL_THRESHOLD:
             action = best_fulfil.get('action', 'wav_response')
             wav_filename = best_fulfil.get('say', '')
             intent = best_fulfil.get('intent', '')
             
-            logger.info(f"Matched fulfil response (fallback): {intent} with score {best_score}")
+            logger.info(f"Matched fulfil response: '{intent}' with score {fulfil_score:.3f}")
+            logger.info(f"Score breakdown - Fuzzy: {score_breakdown.get('fuzzy_score', 0):.3f}, SBERT: {score_breakdown.get('sbert_score', 0):.3f}")
             
             return {
                 "action": action,
                 "say": wav_filename,
-                "confidence": best_score,
+                "confidence": fulfil_score,
                 "matched_intent": intent
             }
+        else:
+            logger.info(f"Fulfil score {fulfil_score:.3f} below threshold {FULFIL_THRESHOLD}, trying fallback")
     
-    # PRIORITY 4: Use fallback responses
+    # PRIORITY 3: Use fallback responses from intent.json
     fallbacks = prompt_data.get('fallback', [])
     if fallbacks:
         fallback = random.choice(fallbacks)
         action = fallback.get('action', 'wav_response')
         wav_filename = fallback.get('say', '')
         
-        logger.info("Using fallback response")
+        logger.info("Using fallback response from intent.json")
         return {
             "action": action,
             "say": wav_filename,
@@ -365,18 +491,20 @@ def validate_flow_structure() -> bool:
         return False
 
 def get_matcher_stats() -> Dict:
-    """Get statistics about both matching systems."""
+    """Get statistics about the matching system."""
     try:
         matcher = get_matcher()
         faiss_stats = matcher.get_stats()
         
         return {
-            "system": "Hybrid FAISS+SBERT + Keyword Matching",
+            "system": "Hybrid FAISS+SBERT + Fuzzy + Keyword Matching",
             "faiss_stats": faiss_stats,
             "total_prompts": len(FLOW),
-            "objection_threshold": OBJECTION_THRESHOLD,
+            "objection_threshold_hangup": OBJECTION_THRESHOLD_HANGUP,
+            "objection_threshold_regular": OBJECTION_THRESHOLD_REGULAR,
             "fulfil_threshold": FULFIL_THRESHOLD,
-            "faiss_threshold": 0.65
+            "fuzzy_weight": FUZZY_WEIGHT,
+            "sbert_weight": SBERT_WEIGHT
         }
     except Exception as e:
         logger.error(f"Error getting matcher stats: {e}")

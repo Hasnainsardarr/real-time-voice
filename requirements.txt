@@ -4,4 +4,6 @@ spacy
 pydantic
 sentence-transformers
 faiss-cpu
-numpy 
+numpy
+fuzzywuzzy
+python-Levenshtein 
