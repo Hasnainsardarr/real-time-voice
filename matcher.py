@@ -3,12 +3,13 @@ import spacy
 import logging
 from typing import Dict, List, Optional, Tuple
 import random
+from faiss_matcher import get_faiss_matcher
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Load spaCy model
+# Load spaCy model (kept for keyword matching fallback)
 try:
     nlp = spacy.load('en_core_web_md')
     logger.info("Successfully loaded spaCy model: en_core_web_md")
@@ -34,6 +35,16 @@ OBJECTION_THRESHOLD = 0.7  # Minimum similarity score for objection matching
 FULFIL_THRESHOLD = 0.3     # Minimum similarity score for fulfil matching
 DEFAULT_CONFIDENCE = 0.8   # Confidence for direct fulfil responses
 
+# Initialize FAISS matcher
+_faiss_matcher = None
+
+def get_matcher():
+    """Get the FAISS matcher instance."""
+    global _faiss_matcher
+    if _faiss_matcher is None:
+        _faiss_matcher = get_faiss_matcher()
+    return _faiss_matcher
+
 def get_prompt_data(prompt: str) -> Optional[Dict]:
     """
     Retrieve prompt data from the flow configuration.
@@ -46,45 +57,10 @@ def get_prompt_data(prompt: str) -> Optional[Dict]:
     """
     return FLOW.get(prompt)
 
-def calculate_similarity(text1: str, text2: str) -> float:
-    """
-    Calculate enhanced similarity between two texts using spaCy + keyword matching.
-    
-    Args:
-        text1: First text to compare
-        text2: Second text to compare
-        
-    Returns:
-        Similarity score between 0 and 1
-    """
-    try:
-        text1_lower = text1.lower()
-        text2_lower = text2.lower()
-        
-        # Keyword-based matching for better accuracy
-        keyword_score = calculate_keyword_similarity(text1_lower, text2_lower)
-        
-        # Semantic similarity using spaCy
-        doc1 = nlp(text1_lower)
-        doc2 = nlp(text2_lower)
-        
-        # Handle empty or very short texts
-        if len(doc1) == 0 or len(doc2) == 0:
-            return keyword_score
-            
-        semantic_score = doc1.similarity(doc2)
-        
-        # Combine keyword and semantic scores (weighted towards keyword for better accuracy)
-        combined_score = (keyword_score * 0.7) + (semantic_score * 0.3)
-        
-        return float(min(combined_score, 1.0))
-    except Exception as e:
-        logger.error(f"Error calculating similarity: {e}")
-        return 0.0
-
 def calculate_keyword_similarity(text1: str, text2: str) -> float:
     """
     Calculate keyword-based similarity for better intent matching.
+    Preserved for objections and special handling.
     
     Args:
         text1: First text to compare
@@ -148,9 +124,47 @@ def calculate_keyword_similarity(text1: str, text2: str) -> float:
     
     return 0.0
 
-def find_best_objection_match(user_text: str, objections: List[Dict]) -> Tuple[Optional[Dict], float]:
+def calculate_similarity_fallback(text1: str, text2: str) -> float:
     """
-    Find the best matching objection for the user text.
+    Calculate similarity using original spaCy + keyword approach.
+    Used as fallback when FAISS doesn't find good matches.
+    
+    Args:
+        text1: First text to compare
+        text2: Second text to compare
+        
+    Returns:
+        Similarity score between 0 and 1
+    """
+    try:
+        text1_lower = text1.lower()
+        text2_lower = text2.lower()
+        
+        # Keyword-based matching for better accuracy
+        keyword_score = calculate_keyword_similarity(text1_lower, text2_lower)
+        
+        # Semantic similarity using spaCy
+        doc1 = nlp(text1_lower)
+        doc2 = nlp(text2_lower)
+        
+        # Handle empty or very short texts
+        if len(doc1) == 0 or len(doc2) == 0:
+            return keyword_score
+            
+        semantic_score = doc1.similarity(doc2)
+        
+        # Combine keyword and semantic scores (weighted towards keyword for better accuracy)
+        combined_score = (keyword_score * 0.7) + (semantic_score * 0.3)
+        
+        return float(min(combined_score, 1.0))
+    except Exception as e:
+        logger.error(f"Error calculating similarity: {e}")
+        return 0.0
+
+def find_best_objection_match_keyword(user_text: str, objections: List[Dict]) -> Tuple[Optional[Dict], float]:
+    """
+    Find the best matching objection using keyword-based matching.
+    Preserved for special objection handling.
     
     Args:
         user_text: The user's input text
@@ -165,7 +179,7 @@ def find_best_objection_match(user_text: str, objections: List[Dict]) -> Tuple[O
     for objection in objections:
         intent_text = objection.get('intent', '')
         
-        similarity = calculate_similarity(user_text, intent_text)
+        similarity = calculate_similarity_fallback(user_text, intent_text)
         
         if similarity > best_score:
             best_score = similarity
@@ -173,34 +187,9 @@ def find_best_objection_match(user_text: str, objections: List[Dict]) -> Tuple[O
                 
     return best_match, best_score
 
-def find_best_fulfil_match(user_text: str, fulfil_list: List[Dict]) -> Tuple[Optional[Dict], float]:
-    """
-    Find the best matching fulfil response for the user text.
-    
-    Args:
-        user_text: The user's input text
-        fulfil_list: List of fulfil definitions
-        
-    Returns:
-        Tuple of (best_fulfil, confidence_score)
-    """
-    best_match = None
-    best_score = 0.0
-    
-    for fulfil in fulfil_list:
-        intent_text = fulfil.get('intent', '')
-        
-        similarity = calculate_similarity(user_text, intent_text)
-        
-        if similarity > best_score:
-            best_score = similarity
-            best_match = fulfil
-                
-    return best_match, best_score
-
 def get_response(prompt: str, text: str) -> Dict:
     """
-    Get the appropriate response for user text based on the prompt context.
+    Get the appropriate response using hybrid FAISS+SBERT and keyword matching.
     
     Args:
         prompt: The current prompt identifier
@@ -225,17 +214,17 @@ def get_response(prompt: str, text: str) -> Dict:
     # Clean and normalize user text
     user_text = text.strip().lower()
     
-    # Check for objections first (highest priority)
+    # PRIORITY 1: Check for objections using keyword matching (preserved for accuracy)
     objections = prompt_data.get('objections', [])
     if objections:
-        best_objection, objection_score = find_best_objection_match(user_text, objections)
+        best_objection, objection_score = find_best_objection_match_keyword(user_text, objections)
         
         if best_objection and objection_score >= OBJECTION_THRESHOLD:
             action = best_objection.get('action', 'wav_response')
             wav_filename = best_objection.get('say', '')
             intent = best_objection.get('intent', '')
             
-            logger.info(f"Matched objection: {intent} with score {objection_score}")
+            logger.info(f"Matched objection (keyword): {intent} with score {objection_score}")
             
             return {
                 "action": action,
@@ -244,26 +233,51 @@ def get_response(prompt: str, text: str) -> Dict:
                 "matched_intent": intent
             }
     
-    # Check for fulfil responses (direct answers)
+    # PRIORITY 2: Use FAISS+SBERT for semantic matching
+    try:
+        matcher = get_matcher()
+        faiss_result = matcher.get_response(prompt, text)
+        
+        # If FAISS found a good match, use it
+        if faiss_result['confidence'] >= 0.65:
+            logger.info(f"FAISS matched: {faiss_result['matched_intent']} with confidence {faiss_result['confidence']}")
+            return faiss_result
+        else:
+            logger.info(f"FAISS confidence too low: {faiss_result['confidence']}, trying fallback")
+            
+    except Exception as e:
+        logger.error(f"Error in FAISS matching: {e}, falling back to keyword matching")
+    
+    # PRIORITY 3: Fallback to original keyword+spaCy matching for fulfil responses
     fulfil_list = prompt_data.get('fulfil', [])
     if fulfil_list:
-        best_fulfil, fulfil_score = find_best_fulfil_match(user_text, fulfil_list)
+        best_fulfil = None
+        best_score = 0.0
         
-        if best_fulfil and fulfil_score >= FULFIL_THRESHOLD:
+        for fulfil in fulfil_list:
+            intent_text = fulfil.get('intent', '')
+            if intent_text and intent_text != '_default_':
+                similarity = calculate_similarity_fallback(user_text, intent_text)
+                
+                if similarity > best_score:
+                    best_score = similarity
+                    best_fulfil = fulfil
+        
+        if best_fulfil and best_score >= FULFIL_THRESHOLD:
             action = best_fulfil.get('action', 'wav_response')
             wav_filename = best_fulfil.get('say', '')
             intent = best_fulfil.get('intent', '')
             
-            logger.info(f"Matched fulfil response: {intent} with score {fulfil_score}")
+            logger.info(f"Matched fulfil response (fallback): {intent} with score {best_score}")
             
             return {
                 "action": action,
                 "say": wav_filename,
-                "confidence": fulfil_score,
+                "confidence": best_score,
                 "matched_intent": intent
             }
     
-    # Fall back to default responses
+    # PRIORITY 4: Use fallback responses
     fallbacks = prompt_data.get('fallback', [])
     if fallbacks:
         fallback = random.choice(fallbacks)
@@ -349,6 +363,24 @@ def validate_flow_structure() -> bool:
     except Exception as e:
         logger.error(f"Error validating flow structure: {e}")
         return False
+
+def get_matcher_stats() -> Dict:
+    """Get statistics about both matching systems."""
+    try:
+        matcher = get_matcher()
+        faiss_stats = matcher.get_stats()
+        
+        return {
+            "system": "Hybrid FAISS+SBERT + Keyword Matching",
+            "faiss_stats": faiss_stats,
+            "total_prompts": len(FLOW),
+            "objection_threshold": OBJECTION_THRESHOLD,
+            "fulfil_threshold": FULFIL_THRESHOLD,
+            "faiss_threshold": 0.65
+        }
+    except Exception as e:
+        logger.error(f"Error getting matcher stats: {e}")
+        return {"error": str(e)}
 
 # Validate flow structure on module load
 if not validate_flow_structure():
